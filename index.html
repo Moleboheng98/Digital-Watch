@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Digital Watch</title>
+    </head>
+  <body>
+  <div id= watch>
+  <div id="clock"></div>
+  <div id="date"></div>
+  </div>
+<script>
+    let use24HourFormat = true;
+
+function updateClock() {
+
+// time code
+
+const now = new Date();
+const hours = String(now. getHours());
+const minutes = String(now. getMinutes());
+const seconds = String(now. getSeconds());
+const ampm = now.getHours() >= 12 ? 'PM' : 'AM';
+const timeString = `${hours}:${minutes}:${seconds} ${ampm}`;
+document. getElementById("clock"). textContent = timeString;
+
+//day code
+
+const dayNames = [ 'Sunday', 'Monday', 'Tuesday','Wednesday','Thursday','Friday','Saturday'];
+const monthNames = ["January", "February", "March","April","May","June","July","August","September", "October", "November", "December"];
+const dayName = dayNames[now. getDay()];
+const date = now. getDate();
+const month = monthNames[now. getMonth()];
+const year = now. getFullYear();
+const dateString = `${dayName}, ${date}-${month}-${year}`;
+document. getElementById("date"). textContent = dateString;
+}
+
+setInterval(updateClock, 1000);
+
+updateClock();
+ </script>
+   </body>
+</html>
